@@ -1,6 +1,6 @@
 from aiogram.dispatcher import Dispatcher
 
-
+from aiogram.types import ContentTypes
 
 import sys
 import os
@@ -14,6 +14,11 @@ from importantFiles.helps import States, dp,bot, cur,conn
 from aiogram import types
 
 
+from otherHandlers.mainOtherHandler import getPhotoId
+
+from userHandlers.mainUserHandler import paySuccess, process_pre_checkout_query
+
+
 
 def registerStartHandler(dp:Dispatcher):#Регистратор хандлеров относящихся к началу пользования ботом
     dp.register_message_handler(startBotHandlerUser, commands="start")
@@ -23,11 +28,14 @@ def registerStartHandler(dp:Dispatcher):#Регистратор хандлеро
 
 
 def registerOtherHandler(dp:Dispatcher):#Регистратор хандлеров относящихся к прочему(Выходы, бэки и тп)
+    #dp.register_message_handler(getPhotoId, content_types="photo", state = "*")
     pass
 
 
 def registerUserHandler(dp:Dispatcher):#Регистрация юзерских хандлеров
-    pass
+    dp.register_message_handler(paySuccess, content_types = ContentTypes.SUCCESSFUL_PAYMENT)
+    dp.register_pre_checkout_query_handler(process_pre_checkout_query, lambda query: True)
+    
 
 
 
