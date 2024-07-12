@@ -20,9 +20,15 @@ from userHandlers.mainUserHandler import paySuccess, process_pre_checkout_query
 
 
 
+from adminHandlers.mainAdminHandler import getImg, getText, responseMailing, startMailing
+
+from importantFiles.config import adminId
+
+
+
 def registerStartHandler(dp:Dispatcher):#Регистратор хандлеров относящихся к началу пользования ботом
-    dp.register_message_handler(startBotHandlerUser, commands="start")
-    dp.register_message_handler(startBotHandlerAdmin, commands="start")
+    dp.register_message_handler(startBotHandlerUser, lambda msg: msg.from_user.id not in adminId, commands="start")
+    dp.register_message_handler(startBotHandlerAdmin,lambda msg: msg.from_user.id in adminId, commands="start")
     
 
 
@@ -41,7 +47,12 @@ def registerUserHandler(dp:Dispatcher):#Регистрация юзерских 
 
 
 def registerAdminHandler(dp:Dispatcher):#Регистрация админ хандлеров
-    pass
+    dp.register_message_handler(startMailing, commands="start_mailing", state = States.ADMIN_MAILING)
+    dp.register_message_handler(responseMailing, commands="mailing", state = States.ADMIN_MAIN_MENU)
+    dp.register_message_handler(getImg, content_types="photo", state = States.ADMIN_MAILING)
+    dp.register_message_handler(getText, content_types="text", state = States.ADMIN_MAILING)
+    
+
 
 
 

@@ -23,9 +23,10 @@ cur = conn.cursor()
 
 
 
-bot = Bot(token=config.TOKEN)
+bot = Bot(token=config.TOKEN, parse_mode="HTML")
 dp = Dispatcher(bot,storage=MemoryStorage())
 
 class States(StatesGroup):  # Создаём состояния
     
-    pass
+    ADMIN_MAIN_MENU = State()
+    ADMIN_MAILING = State()
