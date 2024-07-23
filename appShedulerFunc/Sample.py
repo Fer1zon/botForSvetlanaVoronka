@@ -31,48 +31,49 @@ async def sendMessageAfter2minutes(chat_id, bot:Bot):
     
     sendPhoto = "AgACAgIAAxkBAAMGZogl_W0XU4TFQ6V3LYu9y6qM_EoAAnPcMRv9KEBIQ2BOdoDlz4YBAAMCAAN5AAM1BA"
     sendText = """
-<b>Видео-разбор продаж товаров на 3 млн+ с помощью креативного маркетинга доступен на ссылке ниже</b> ⬇️ 
+"Ты тут? 
 
-За 2 года тестов креативного маркетинга в своем бизнесе я накопила много практического опыта. Привлекла более 5000 тысяч клиентов в свои магазины, сделала 9-значные обороты 
-проекта, хакнула систему маркетинга в продаже товаров и услуг. 
+Хочу поделиться с тобой материалами, в которых расскажу, как я продаю товары на 3+ млн за короткий срок с помощью креативного маркетинга, а также как и зачем креативный маркетинг применяют мировые бренды на огромных масштабах. 
 
-🎥 Весь этот опыт я упаковала в видео-разбор. В нем за 11 минут я даю выжимку с примерами того, что сработало именно у меня. 
+В следующей статье мы разберем 3 креативных инструмента на примере крупных брендов, и как их применять в своем бизнесе. 
 
-Пока урок доступен в бесплатном формате, советую перейти к просмотру 👇🏻
+❗️Но сначала попрошу ознакомиться с правилами.
+1. Чтобы получать контент нужно сразу жать на все кнопки и не затягивать. 
+Если ты этого не сделаешь, тебе придет напоминалка. Проигноришь и её, твой доступ к контенту сгорит, а тебя перекинет на следующий этап без права восстановления.
+2. Не забираешь контент больше суток — все сгорает.
+
+☝️ Так что не зевай. Ибо за этим контентом стоит много миллионов моей выручки, и тонна ошибок, которых ты можешь избежать."
 """
 
-    sendKb = InlineKeyboardMarkup().add(InlineKeyboardButton("Забрать статью", url = "https://vk.com"))
+    sendKb = InlineKeyboardMarkup().add(InlineKeyboardButton("Забрать статью", url = "https://telegra.ph/enkg-07-12"))
 
     await bot.send_photo(chat_id=chat_id, caption=sendText, photo=sendPhoto, reply_markup=sendKb)
 
-    scheduler.add_job(sendMessageAfter3Minutes, trigger="date", run_date = datetime.now() + timedelta(seconds=20), args=[chat_id, bot])
+    #scheduler.add_job(sendMessageAfter3Minutes, trigger="date", run_date = datetime.now() + timedelta(seconds=20), args=[chat_id, bot])
 
-
-
-    
-    # scheduler.add_job(sendMessageAfter3Minutes, trigger="date", run_date = datetime.now() + timedelta(minutes=3))
+    scheduler.add_job(sendMessageAfter3Minutes, trigger="date", run_date = datetime.now() + timedelta(minutes=3), args=[chat_id, bot])
 
 
 
 async def sendMessageAfter3Minutes(chat_id, bot:Bot):
     sendPhoto = "AgACAgIAAxkBAAMXZogo1ebNewkTNRfofzNDBZgjwiUAAofcMRv9KEBIUW125H1HK3wBAAMCAAN5AAM1BA"
     sendText = """
-ВИДЕО РАЗБОР МОИХ ПРОДАЖ ТОВАРОВ НА 3млн+ С ПОМОЩЬЮ КРЕАТИВНОГО МАРКЕТИНГА ДОСТУПЕН ПО ССЫЛКЕ НИЖЕ ⬇️ 
+<b>Видео-разбор продаж товаров на 3 млн+ с помощью креативного маркетинга доступен на ссылке ниже ⬇️</b>
 
 За 2 года тестов креативного маркетинга в своем бизнесе я накопила много практического опыта. 
-Привлекла более 5000 тысяч клиентов в свои магазины, сделала 9-значные обороты проекта, хакнула систему маркетинга в продаже товаров и услуг. 
+Привлекла <b>более 5000</b> тысяч клиентов в свои магазины, сделала <b>9-значные обороты проекта</b>, хакнула систему маркетинга в продаже товаров и услуг. 
 
 Весь этот опыт я упаковала в видео-обзор. В нем за 11 минут я даю выжимку с примерами того, что сработало именно у меня. 
 
 Пока урок доступен в бесплатном формате, советую перейти к просмотру 👇🏻
 """
 
-    sendKb = InlineKeyboardMarkup().add(InlineKeyboardButton("Смотреть видео", url = "https://vk.com"))
+    sendKb = InlineKeyboardMarkup().add(InlineKeyboardButton("Смотреть видео", url = "https://youtu.be/X8-dSGbNXuQ"))
 
     await bot.send_photo(chat_id=chat_id, caption=sendText, photo=sendPhoto, reply_markup=sendKb)
 
-    # scheduler.add_job(sendMessageAfter10Minutes, trigger="date", run_date = datetime.now() + timedelta(minutes=10), args=[chat_id, bot])
-    scheduler.add_job(sendMessageAfter10Minutes, trigger="date", run_date = datetime.now() + timedelta(seconds=40), args=[chat_id, bot])
+    scheduler.add_job(sendMessageAfter10Minutes, trigger="date", run_date = datetime.now() + timedelta(minutes=10), args=[chat_id, bot])
+    #scheduler.add_job(sendMessageAfter10Minutes, trigger="date", run_date = datetime.now() + timedelta(seconds=40), args=[chat_id, bot])
 
 
 
@@ -106,8 +107,8 @@ async def sendMessageAfter10Minutes(chat_id, bot:Bot):
 
     
 
-    # scheduler.add_job(sendMessageAfter3Minutes2, trigger="date", run_date = datetime.now() + timedelta(minutes=3), args = [chat_id, bot])
-    scheduler.add_job(sendMessageAfter3Minutes2, trigger="date", run_date = datetime.now() + timedelta(seconds = 30), args = [chat_id, bot])
+    scheduler.add_job(sendMessageAfter3Minutes2, trigger="date", run_date = datetime.now() + timedelta(minutes=3), args = [chat_id, bot])
+    #scheduler.add_job(sendMessageAfter3Minutes2, trigger="date", run_date = datetime.now() + timedelta(seconds = 30), args = [chat_id, bot])
 
     state: FSMContext = dp.current_state(chat=chat_id, user=chat_id)
     data = await state.get_data()
@@ -213,8 +214,8 @@ async def sendMessageAfter3Minutes2(chat_id, bot:Bot):
     if data["pay"] == "False":
         await sendPayInvoice(chat_id, bot , textInButton="Оплатить интенсив")
 
-    # scheduler.add_job(checkPay, trigger="date", run_date = datetime.now() + timedelta(minutes=5))
-    scheduler.add_job(checkPay, trigger="date", run_date = datetime.now() + timedelta(seconds=30), args=[chat_id, bot])
+    scheduler.add_job(checkPay, trigger="date", run_date = datetime.now() + timedelta(minutes=5), args=[chat_id, bot])
+    #scheduler.add_job(checkPay, trigger="date", run_date = datetime.now() + timedelta(seconds=30), args=[chat_id, bot])
 
 
 
@@ -253,20 +254,42 @@ async def sendMessageAfter3Hours(chat_id, bot:Bot):
 
 async def sendPayInvoice(chat_id, bot:Bot, textInButton:str):
     sendKb = InlineKeyboardMarkup().add(InlineKeyboardButton(textInButton, pay=True))
+    desc = """<b>💸 СТОИМОСТЬ ДОСТУПА К ИНТЕНСИВУ 5555₽</b>
+(после оплаты доступ к каналу остается на 2 месяца)
+  
+*проверка оплаты проходит в течении 5 минут
+  
+Нажимая на кнопку "ОПЛАТИТЬ ДОСТУП", вы подтверждаете, что ознакомились с документами ниже:
+
+<a href = 'https://disk.yandex.ru/i/HZza7qsJ40LzLg'>- договор оферты</a>
+
+<a href = 'https://disk.yandex.ru/i/PQHIlO4kKd9Gnw'>- политика конфиденциальности</a>
+
+<a href = 'https://disk.yandex.ru/i/M89RkSNEAcGwIg'>- согласие на обработку персональных данных</a>
+
+<a href = 'https://disk.yandex.ru/i/mE0FvFDPrRIu_A'>- согласие на получение рекламы</a>
+"""
+
+
+    msg = await bot.send_message(chat_id=chat_id, text=desc, disable_web_page_preview=True)
+
     await bot.send_invoice(
     chat_id,
     title="Оплата доступа",
     description="Оплати доступ к интенсиву и переходи в закрытый телеграм-канал",
-    provider_token=TEST_PAY_TOKEN,
+    provider_token=PAY_TOKEN,
     currency='rub',
     is_flexible=False,  # True если конечная цена зависит от способа доставки
     prices=[SERVICE_PRICE],
     start_parameter='service-pay',
     payload='some-invoice-payload-for-our-internal-use',
-    reply_markup=sendKb
+    reply_markup=sendKb,
+    need_email=True,
+    reply_to_message_id= msg.message_id
 )
 
 
 async def kickUser(user_id, channelId, bot:Bot):
     await bot.kick_chat_member(chat_id=channelId, user_id=user_id)
+    await bot.unban_chat_member(chat_id=channelId, user_id=user_id)
     

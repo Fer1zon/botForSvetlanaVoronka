@@ -14,3 +14,8 @@ from importantFiles.helps import States, dp,bot, cur,conn
 
 async def getPhotoId(message:types.Message):
     await message.answer(message.photo[-1].file_id)
+
+
+
+async def getNoteId(message:types.Message):
+    await message.answer(message.video_note.file_id)

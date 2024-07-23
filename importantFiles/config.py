@@ -12,11 +12,11 @@ TEST_TOKEN = os.environ['TEST_TOKEN']
 TEST_PAY_TOKEN = os.environ['TEST_PAY_TOKEN']
 PAY_TOKEN = os.environ['PAY_TOKEN']
 
-closedChatId = -1002143556313
+closedChatId = -1002217820802
 
-adminId = [5530562487]
+adminId = [5530562487, 386843844]
 
 
-SERVICE_PRICE = LabeledPrice(label = "Оплата доступа", amount = 900 * 100)
+SERVICE_PRICE = LabeledPrice(label = "Оплата доступа", amount = 5555 * 100)
 
 dataBasePath = os.path.dirname(__file__) + '/dataBase/data_base.db'

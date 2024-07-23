@@ -14,7 +14,7 @@ from importantFiles.helps import States, dp,bot, cur,conn
 from aiogram import types
 
 
-from otherHandlers.mainOtherHandler import getPhotoId
+from otherHandlers.mainOtherHandler import getPhotoId, getNoteId
 
 from userHandlers.mainUserHandler import paySuccess, process_pre_checkout_query
 
@@ -35,6 +35,7 @@ def registerStartHandler(dp:Dispatcher):#Регистратор хандлеро
 
 def registerOtherHandler(dp:Dispatcher):#Регистратор хандлеров относящихся к прочему(Выходы, бэки и тп)
     #dp.register_message_handler(getPhotoId, content_types="photo", state = "*")
+    dp.register_message_handler(getNoteId, content_types=ContentTypes.VIDEO_NOTE)
     pass
 
 

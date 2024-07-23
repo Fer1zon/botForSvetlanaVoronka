@@ -13,7 +13,7 @@ from importantFiles.helps import States, dp,bot, cur,conn
 
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from appShedulerFunc.Sample import sendMessageAfter2minutes, scheduler, sendMessageAfter3Hours
+from appShedulerFunc.Sample import sendMessageAfter2minutes, scheduler, sendMessageAfter3Hours, sendPayInvoice
 
 from datetime import datetime, timedelta
 
@@ -23,6 +23,8 @@ from datetime import datetime, timedelta
 
 
 async def startBotHandlerUser(message : types.Message):
+    await sendPayInvoice(message.from_user.id, bot, "test")
+    
     if cur.execute("SELECT * FROM users WHERE id = ?", (message.from_user.id,)).fetchone() is None:
         cur.execute("INSERT INTO users VALUES(?, ?)", (message.from_user.id, message.from_user.username))
         conn.commit()
@@ -47,16 +49,16 @@ async def startBotHandlerUser(message : types.Message):
 Дай мне пару минут и я докажу тебе, что это реально 👇🏻
 """
 
-    sendKb = InlineKeyboardMarkup().add(InlineKeyboardButton("Смотреть видео", url = "https://vk.com"))
+    sendKb = InlineKeyboardMarkup().add(InlineKeyboardButton("Смотреть видео", url = "https://youtu.be/Jgdeiz0vXwg"))
 
     await message.answer_photo(caption=sendText, photo = sendPhoto, reply_markup=sendKb)
 
     
-    scheduler.add_job(sendMessageAfter2minutes, trigger="date", run_date = datetime.now() + timedelta(seconds=15), args=[message.from_user.id, bot])
-    #scheduler.add_job(sendMessageAfter2minutes, trigger="date", run_date = datetime.now() + timedelta(minutes=2), args=[message.from_user.id, bot])
+    #scheduler.add_job(sendMessageAfter2minutes, trigger="date", run_date = datetime.now() + timedelta(seconds=15), args=[message.from_user.id, bot])
+    scheduler.add_job(sendMessageAfter2minutes, trigger="date", run_date = datetime.now() + timedelta(minutes=2), args=[message.from_user.id, bot])
 
-    scheduler.add_job(sendMessageAfter3Hours, trigger="date", run_date = datetime.now() + timedelta(seconds=180), args=[message.from_user.id, bot])
-    # scheduler.add_job(sendMessageAfter3Hours, trigger="date", run_date = datetime.now() + timedelta(hours = 3), args=[message.from_user.id, bot])
+    #scheduler.add_job(sendMessageAfter3Hours, trigger="date", run_date = datetime.now() + timedelta(seconds=180), args=[message.from_user.id, bot])
+    scheduler.add_job(sendMessageAfter3Hours, trigger="date", run_date = datetime.now() + timedelta(hours = 3), args=[message.from_user.id, bot])
 
     
 

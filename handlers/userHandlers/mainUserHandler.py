@@ -34,12 +34,12 @@ async def paySuccess(message:types.Message, state:FSMContext):
 
     sendText = f"""
 Благодарим за оплату!
-Вот ваша ссылка на канал: {link.invite_link} . Она одноразовая, поэтому не давайте ее не кому другому!"""
+Вот ваша ссылка на канал: {link.invite_link} . Она одноразовая, поэтому не давайте ее никому другому!"""
     
     await message.answer(sendText)
 
-    # scheduler.add_job(kickUser, "date", run_date = datetime.now() + timedelta(days=61), args=[message.from_user.id, closedChatId, bot])
-    scheduler.add_job(kickUser, "date", run_date = datetime.now() + timedelta(seconds=30), args=[message.from_user.id, closedChatId, bot])
+    scheduler.add_job(kickUser, "date", run_date = datetime.now() + timedelta(days=61), args=[message.from_user.id, closedChatId, bot])
+    #scheduler.add_job(kickUser, "date", run_date = datetime.now() + timedelta(seconds=30), args=[message.from_user.id, closedChatId, bot])
 
 
 
