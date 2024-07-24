@@ -7,9 +7,9 @@ load_dotenv()
 from aiogram.types import LabeledPrice
 
 TOKEN = os.environ['TOKEN']
-TEST_TOKEN = os.environ['TEST_TOKEN']
+TEST_TOKEN = os.environ.get('TEST_TOKEN')
 
-TEST_PAY_TOKEN = os.environ['TEST_PAY_TOKEN']
+TEST_PAY_TOKEN = os.environ.get('TEST_PAY_TOKEN')
 PAY_TOKEN = os.environ['PAY_TOKEN']
 
 closedChatId = -1002217820802

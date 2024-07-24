@@ -23,7 +23,7 @@ from datetime import datetime, timedelta
 
 
 async def startBotHandlerUser(message : types.Message):
-    await sendPayInvoice(message.from_user.id, bot, "test")
+    #await sendPayInvoice(message.from_user.id, bot, "test")
     
     if cur.execute("SELECT * FROM users WHERE id = ?", (message.from_user.id,)).fetchone() is None:
         cur.execute("INSERT INTO users VALUES(?, ?)", (message.from_user.id, message.from_user.username))
